@@ -4,6 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 export interface ItemData {
   name: string;
@@ -24,34 +25,12 @@ export class MaterialDialogComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(MaterialDialogComponentDialog, {
-      data: {
-        name: this.name,
-        num: this.num,
-        expirationDate: this.expirationDate,
-      },
+    let dialogRef = this.dialog.open(DialogComponent, {
+      data: { name: 'Orange' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('Closed');
-      this.name = result;
+      console.log(`Dialog Result: ${result}`);
     });
-  }
-}
-
-@Component({
-  selector: 'material-dialog-component-dialog',
-  templateUrl: 'material-dialog-component-dialog.html',
-})
-export class MaterialDialogComponentDialog {
-  constructor(
-    public dialogRef: MatDialogRef<MaterialDialogComponentDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: ItemData
-  ) {
-    console.log(data);
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }
