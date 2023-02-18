@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { item } from '../material-table/material-table.component';
 
 @Component({
@@ -9,13 +9,22 @@ import { item } from '../material-table/material-table.component';
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent implements OnInit {
+  itemForm = new FormGroup({
+    name: new FormControl(''),
+    num: new FormControl(),
+    expDate: new FormControl(),
+  });
+
+  newItem: item;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  name: string;
-  num: number;
-  expDate: string;
-
-  submitForm(): void {}
+  submitForm(): void {
+    this.newItem = {
+      name: this.itemForm.get('name').value,
+      num: this.itemForm.get('num').value,
+      expirationDate: this.itemForm.get('expDate').value,
+    };
+  }
 
   ngOnInit() {}
 }

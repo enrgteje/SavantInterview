@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-
 export interface item {
   name: string;
   num: number;
-  expirationDate: string;
+  expirationDate: any;
 }
 
 let items: item[] = [
