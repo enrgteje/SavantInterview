@@ -1,14 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { item } from '../material-table/material-table.component';
+import { SendObjService } from '../send-obj.service';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
+  constructor(private dataService: SendObjService) {}
+
   itemForm = new FormGroup({
     name: new FormControl(''),
     num: new FormControl(),
@@ -16,7 +18,6 @@ export class DialogComponent implements OnInit {
   });
 
   newItem: item;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   submitForm(): void {
     this.newItem = {
@@ -24,7 +25,7 @@ export class DialogComponent implements OnInit {
       num: this.itemForm.get('num').value,
       expirationDate: this.itemForm.get('expDate').value,
     };
+    let itemData = this.newItem;
+    this.dataService.updateItem(itemData);
   }
-
-  ngOnInit() {}
 }

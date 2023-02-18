@@ -25,12 +25,6 @@ export class MaterialDialogComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(DialogComponent, {
-      data: { name: '', num: null, expDate: null },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog Result: ${result.data}`);
-    });
+    let dialogRef = this.dialog.open(DialogComponent, {});
   }
 }

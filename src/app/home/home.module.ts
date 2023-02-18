@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SendObjService } from '../send-obj.service';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -41,5 +42,7 @@ import { DialogComponent } from '../dialog/dialog.component';
     DialogComponent,
   ],
   entryComponents: [DialogComponent],
+  providers: [SendObjService],
+  bootstrap: [DialogComponent, MaterialTableComponent],
 })
 export class HomePageModule {}
