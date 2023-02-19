@@ -11,6 +11,7 @@ import { SendObjService } from '../send-obj.service';
 export class DialogComponent {
   constructor(private dataService: SendObjService) {}
 
+  // Grabbing the values from the form
   itemForm = new FormGroup({
     name: new FormControl(''),
     num: new FormControl(),
@@ -18,7 +19,6 @@ export class DialogComponent {
   });
 
   newItem: item;
-
   submitForm(): void {
     this.newItem = {
       name: this.itemForm.get('name').value,
@@ -26,6 +26,8 @@ export class DialogComponent {
       expirationDate: this.itemForm.get('expDate').value,
     };
     let itemData = this.newItem;
+
+    // Sending the data to the service
     this.dataService.updateItem(itemData);
   }
 }

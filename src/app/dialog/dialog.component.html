@@ -1,14 +1,20 @@
 <div>
+  <!-- Inside Dialog Window -->
   <h2 mat-dialog-title>Add Item</h2>
   <form [formGroup]="itemForm">
+    <!-- Name input -->
     <mat-form-field appearance="fill">
       <mat-label for="name">Name</mat-label>
       <input matInput formControlName="name" />
     </mat-form-field>
+
+    <!-- Number input -->
     <mat-form-field appearance="fill">
       <mat-label for="number">Number</mat-label>
       <input matInput type="number" formControlName="num" />
     </mat-form-field>
+
+    <!-- Date input -->
     <mat-form-field appearance="fill">
       <mat-label for="expDate">Choose an expiration date</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="expDate" />
@@ -20,6 +26,7 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
+    <!-- Close and Submit Buttons -->
     <mat-dialog-actions>
       <ion-button mat-button mat-dialog-close>Close</ion-button>
       <ion-button (click)="submitForm()" mat-dialog-close>Submit</ion-button>

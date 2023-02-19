@@ -32,7 +32,10 @@
       </td>
     </ng-container>
 
+    <!-- Column headers -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <!-- Items -->
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
